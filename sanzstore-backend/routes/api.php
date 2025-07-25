@@ -45,7 +45,7 @@ use App\Http\Controllers\Admin\ChatConversationController as AdminChatConversati
 // yang menangani X-XSRF-TOKEN dari cookie.
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/api/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 // Ruta Publik (Tidak memerlukan autentikasi)
 Route::get('/products', [ProductController::class, 'index']); // fetchProducts

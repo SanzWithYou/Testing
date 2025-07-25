@@ -33,20 +33,20 @@ export interface SignUpCredentials {
 // =================================================================
 
 // --- AUTHENTICATION API ---
-export const signUp = async (credentials: SignUpCredentials): Promise<void> => {
+export const signUp = async (credentials: SignUpCredentials): Promise<User> => {
   await apiClient.get('/sanctum/csrf-cookie'); // ✅ WAJIB PANGGIL sebelum POST auth
-  await apiClient.post('/api/register', credentials);
+  const { data } = await apiClient.post('/api/register', credentials);
+  return data.user;
 };
 
 export const signIn = async (credentials: AuthCredentials): Promise<User> => {
   await apiClient.get('/sanctum/csrf-cookie'); // ✅ WAJIB PANGGIL sebelum POST auth
-  await apiClient.post('/api/login', credentials);
-  const { data } = await apiClient.get('/api/user');
-  return data;
+  const { data } = await apiClient.post('/api/login', credentials);
+  return data.user;
 };
 
 export const signOut = async (): Promise<void> => {
-  await apiClient.post('/logout'); // CSRF sudah aktif
+  await apiClient.post('/api/logout'); // CSRF sudah aktif
 };
 
 export const getProfileForUser = async (): Promise<User | null> => {
