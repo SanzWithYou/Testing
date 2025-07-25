@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller; // <-- TAMBAHKAN BARIS INI
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\ProductStatus;
+use App\Enums\ProductStatus;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
