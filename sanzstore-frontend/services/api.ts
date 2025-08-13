@@ -8,10 +8,6 @@ import {
   ChatMessage,
   Testimonial,
 } from '../types';
-import axios from 'axios';
-
-// ✅ Aktifkan cookie agar CSRF token bisa terkirim
-axios.defaults.withCredentials = true;
 
 // =================================================================
 // AUTH & USER TYPE DEFINITIONS
